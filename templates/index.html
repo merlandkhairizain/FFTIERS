@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FFTIERS - Competitive Leaderboard</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+        h1 { color: #deff9a; letter-spacing: 2px; }
+        .leaderboard {
+            width: 800px;
+            background: #111;
+            border-radius: 10px;
+            border: 1px solid #222;
+            overflow: hidden;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #1a1a1a; padding: 15px; text-align: left; color: #777; }
+        td { padding: 15px; border-bottom: 1px solid #222; }
+        
+        /* Pewarnaan Tier ala MCTIERS */
+        .tier {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .HT1 { background: #422006; color: #fbbf24; border: 1px solid #b45309; }
+        .HT2 { background: #1e1b4b; color: #818cf8; border: 1px solid #4338ca; }
+        .LT1 { background: #2e1065; color: #c084fc; border: 1px solid #7e22ce; }
+    </style>
+</head>
+<body>
+    <h1>FFTIERS LEADERBOARD</h1>
+    <div class="leaderboard">
+        <table>
+            <thead>
+                <tr>
+                    <th>RANK</th>
+                    <th>PLAYER</th>
+                    <th>POINTS</th>
+                    <th>TIER</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pemain %}
+                <tr>
+                    <td style="color: #deff9a;">#{{ loop.index }}</td>
+                    <td><strong>{{ p.nama }}</strong></td>
+                    <td>{{ p.poin }}</td>
+                    <td><span class="tier {{ p.tier[:3] }}">{{ p.tier }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
